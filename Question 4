@@ -1,0 +1,57 @@
+#include <Servo.h>
+
+const int soilMoisturePin = A0;        
+const int pumpPin = 9;                 
+const int potentiometerPin = A1;       
+const int buzzerPin = 5;            //BUZZER PIN
+const int feedbackPin = 6;          //FEEDBACK PIN
+Servo servoMotor;                      
+
+int soilMoistureThreshold = 300;       // this can be any custom number as required 
+
+void setup() {
+  pinMode(soilMoisturePin, INPUT);
+  pinMode(pumpPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(feedbackPin, OUTPUT);
+  servoMotor.attach(10);
+  Serial.begin(9600);    //Serial Monitor, Check if the baud rate is matching :)
+}
+
+void loop() {
+ 
+  int soilMoisture = analogRead(soilMoisturePin);
+  int potValue = analogRead(potentiometerPin);
+  
+  soilMoistureThreshold = map(potValue, 0, 1023, 150, 960);    // Map potentiometer value (0-1023) to desired threshold range (e.g., 150-960)
+
+  Serial.print("Soil Moisture is : ");  Serial.print(soilMoisture);
+  Serial.print(", Threshold is : ");    Serial.println(soilMoistureThreshold);
+
+  if (soilMoisture < soilMoistureThreshold) {
+    digitalWrite(pumpPin, HIGH);
+    servoMotor.write(90);   
+    feedback(true);         
+    delay(5000);            
+    digitalWrite(pumpPin, LOW);
+    servoMotor.write(0);    
+    feedback(false);        
+  }
+  delay(1000);       // to check soil moisture at some frequent intervals say 1 sec
+}
+void feedback(bool wateringStarted) {          // FEEDBACK MECHANISM
+  if (wateringStarted) {
+    digitalWrite(buzzerPin, HIGH);
+    digitalWrite(feedbackPin, HIGH);
+        delay(500);
+    digitalWrite(buzzerPin, LOW);
+    digitalWrite(feedbackPin, LOW);
+    
+  } else {
+    digitalWrite(buzzerPin, HIGH);
+    digitalWrite(feedbackPin, HIGH);
+        delay(500);
+    digitalWrite(buzzerPin, LOW);
+    digitalWrite(feedbackPin, LOW);
+  }
+}
