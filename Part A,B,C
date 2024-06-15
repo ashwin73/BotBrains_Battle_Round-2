@@ -1,0 +1,22 @@
+A) The required parameters for computing the maximum angle of inclination are:
+Dimensions of the wheel diameter and distance between the two sides of the base. Increased wheel size and broader base enhance stability and enable more tolerance for higher tilt angles.
+The stability of the robot is influenced by the position of its center of mass in relation to its wheels. A lower center of mass enhances stability when tilting at greater angles.
+The motor's torque and power are crucial factors in the robot's capacity to correct tilts and sustain equilibrium.
+Precision and speed of sensor detection: Gyroscopes and accelerometers must possess high accuracy and responsiveness in order to immediately identify tilts.
+Algorithm: The effectiveness of the control algorithm in handling sensor data and modifying motor outputs to counterbalance tilts is vital.
+The maximum allowed tilt angle might be influenced by surface conditions and external disturbances related to terrain and environmental factors.
+
+B) The major but basic concept behind two-wheeled self-balancing robots (TWSBR) is its capacity to maintain dynamic balance through the use of sensors and algorithms. 
+Accelerometers and gyroscopes (mainly MPU6050) are used by these robots to continuously monitor their tilt angles and motions. 
+This real-time sensor data is processed by complicated algorithms, such as PID controllers or more advanced methods to determine and adjust the wheels' speed and direction. 
+By dynamically adjusting motor outputs depending on detected deviations from upright posture (intially straight), TWSBRs achieve stability and mobility in a range of scenarios, 
+enabling applications such as personal transportation, delivery services, and surveillance that are both efficient and flexible.
+
+C)Ultimately, we can create a limb-like structure that possesses the capability to securely hold and let go of objects. This structure will be situated at the extremity of the limb. 
+  Integrate and rectify the robotic arm onto the TWSBR frame, ensuring that it does not compromise the robot's balance or movement. Employ lightweight materials to reduce the extra weight
+  and maintain stability. Develop or adjust control algorithms to coordinate the movements of the robotic arm with the TWSBR's balancing system. 
+Secondly, include sensors, such as cameras or depth sensors, to allow the robot to detect and accurately ascertain the position of objects that are appropriate for manipulation. 
+  Computer vision algorithms can be employed to precisely identify and classify objects, together with techniques for grasping and manipulating them.
+Advantages: The TWSBR possesses the capability to do tasks that extend beyond just locomotion. The device is capable of grasping and relocating items, operating doors,
+            and assisting in the process of assembling goods. Enhances the robot's autonomous decision-making by integrating object manipulation capabilities, hence reducing the need
+            for human intervention in certain tasks.Broadens the range of applications for TWSBRs in industries such as logistics, manufacturing, healthcare, and home support.
